@@ -49,32 +49,36 @@ function makeRequest({ method = '', url = '', params = null, headers = null }) {
  *
  * @method searchStreams
  * @param  {String}      [query=''] The user's query
- * @param  {Number}      [offset=0] The offset (if any)
  * @return {Object}
  */
-async function searchStreams(query = '', offset = 0) {
+async function searchStreams(query = '') {
     try {
         // Fetch the stream results.
         const resp = await makeRequest({
             method: 'GET',
-            url: CLIENT_URL,
+            url: GLOBALS.CLIENT_URL,
             headers: {
-                'Client-Id': CLIENT_ID
+                'Client-Id': GLOBALS.CLIENT_ID
             },
             params: {
-                limit: 5,
-                offset,
+                limit: GLOBALS.QUERY_LIMIT,
+                offset: GLOBALS.queryOffset,
                 query
             }
         });
-        console.log('searchStreams : resp :', resp);
+        const total = resp._total;
+        // Determine the max number of pages.
+        const maxPages = Math.ceil(total / GLOBALS.QUERY_LIMIT);
+        // Set the global max pages.
+        GLOBALS.maxPageNumber = maxPages;
         // Return a clean obj.
         return {
+            maxPages,
+            query,
             streams: normalizeStreams(resp.streams || []),
-            total: resp._total
+            total
         };
     } catch (e) {
-        console.log('e :', e);
-        return e;
+        throw e;
     }
 }

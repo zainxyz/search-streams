@@ -54,37 +54,119 @@ function cleanSearchResults() {
     document.getElementById('searchResultsList').innerHTML = '';
 }
 
-function fetchResultsFor(query) {
-    if (query && query !== oldSearchQuery) {
+/**
+ * Build the header for the search results (user message + pagination).
+ *
+ * @method buildHeader
+ * @param  {Object}    res The API response
+ */
+function buildHeader(res) {
+    const { query, total } = res;
+    // Find couple of elements.
+    const pagination = document.getElementById('pagination');
+    const msgContainer = document.getElementById('msgContainer');
+    // Based on the `total` value, we'll update the header.
+    if (total) {
+        // Find some elements.
+        const maxPageCount = document.getElementById('maxPageCount');
+        const currPageCount = document.getElementById('currPageCount');
+        const prevPageBtn = document.getElementById('prevPageBtn');
+        const nextPageBtn = document.getElementById('nextPageBtn');
+        const totalResults = document.getElementById('totalResults');
+        // Reset the `totalResults` content based on the total results.
+        totalResults.innerHTML = total;
+        // Set the max page count.
+        maxPageCount.innerHTML = GLOBALS.maxPageNumber;
+        // Set the current page count.
+        currPageCount.innerHTML = GLOBALS.currentPageNumber;
+        // Disable the `prevPageBtn` if the current page number is 1.
+        GLOBALS.currentPageNumber === 1
+            ? prevPageBtn.setAttribute('disabled', true)
+            : prevPageBtn.removeAttribute('disabled');
+        // Disable the `nextPageBtn` if the current page number is the `maxPageCount`.
+        GLOBALS.currentPageNumber === GLOBALS.maxPageNumber
+            ? nextPageBtn.setAttribute('disabled', true)
+            : nextPageBtn.removeAttribute('disabled');
+        // Show the pagination.
+        pagination.hasAttribute('hidden') && pagination.removeAttribute('hidden');
+        // Hide the msg container.
+        !msgContainer.hasAttribute('hidden') && msgContainer.setAttribute('hidden', true);
+    } else {
+        // Find some elements.
+        const msg = document.getElementById('msg');
+        // Update msg to let the user know we were unable to find results for their query.
+        msg.innerHTML = `
+            Sorry, but we were unable to find results for the <code>${query}</code> query.
+            <br />
+            Please try again.
+        `;
+        // Hide the pagination.
+        !pagination.hasAttribute('hidden') && pagination.setAttribute('hidden', true);
+        // Show the msg container.
+        msgContainer.hasAttribute('hidden') && msgContainer.removeAttribute('hidden');
+    }
+}
+
+/**
+ * Fetch results and render the DOM for a given search query.
+ *
+ * @method fetchResultsFor
+ * @param  {String}        query The search query
+ */
+function fetchResultsFor(query = GLOBALS.prevSearchQuery) {
+    if (
+        query &&
+        (query !== GLOBALS.prevSearchQuery || GLOBALS.currentPageNumber <= GLOBALS.maxPageNumber)
+    ) {
         searchStreams(query)
             .then(resp => {
                 // Clean out the old UI.
                 cleanSearchResults();
+                // Build the header elements (message + pagination).
+                buildHeader(resp);
                 // Build the UI.
-                resp.streams.forEach(buildSearchResultItem);
-                // Update the oldSearchQuery value.
-                oldSearchQuery = query;
+                resp.streams &&
+                    Array.isArray(resp.streams) &&
+                    resp.streams.forEach(buildSearchResultItem);
+                // Update the prevSearchQuery value.
+                GLOBALS.prevSearchQuery = query;
             })
             .catch(err => {
-                console.log('err :', err);
+                // Find some elements.
+                const msg = document.getElementById('msg');
+                // Update msg to let the user know we were unable to find results for their query.
+                msg.innerHTML = `
+                    Sorry, an error occured.
+                    <br />
+                    <code>${err.message}</code>
+                `;
             });
     }
 }
 
-function autorun() {
-    console.log('autorun');
-
+/**
+ * The main bootstrap function.
+ *
+ * @method bootstrap
+ */
+function bootstrap() {
+    // Find some elements.
     const searchInput = document.getElementById('searchInput');
     const searchInputBtn = document.getElementById('searchInputBtn');
-
+    const prevPageBtn = document.getElementById('prevPageBtn');
+    const nextPageBtn = document.getElementById('nextPageBtn');
+    // Add event listeners to the `input` and `input btn` elements.
     searchInputBtn.addEventListener('click', handleOnSearchInputBtnClick);
     searchInput.addEventListener('keyup', handleOnSearchInputKeyup);
+    // Add event listeners to the `prev` and `next` page buttons.
+    prevPageBtn.addEventListener('click', handleOnClickPageBtn(true));
+    nextPageBtn.addEventListener('click', handleOnClickPageBtn());
 }
 
 if (document.addEventListener) {
-    document.addEventListener('DOMContentLoaded', autorun, false);
+    document.addEventListener('DOMContentLoaded', bootstrap, false);
 } else if (document.attachEvent) {
-    document.attachEvent('onreadystatechange', autorun);
+    document.attachEvent('onreadystatechange', bootstrap);
 } else {
-    window.onload = autorun;
+    window.onload = bootstrap;
 }

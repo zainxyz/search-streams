@@ -16,6 +16,13 @@
 <body>
     <!-- Design the App -->
     <div class="container my-5 px-4">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="font-weight-light">Search Twitch.tv Streams</h4>
+                <p>Searches for streams based on a specified <code>query</code> parameter.
+                    <br />A stream is returned if the query parameter is matched entirely or partially, in the channel description or game name.</p>
+            </div>
+        </div>
         <div class="row no-gutters flex-column border border-secondary rounded shadow-sm">
             <!-- top search query box -->
             <div class="col-12 border-bottom border-secondary p-4">
@@ -30,8 +37,14 @@
             </div>
             <!-- bottom items list -->
             <div class="col-12 p-4">
+                <!-- welcome message -->
+                <div class="row align-items-center" id="msgContainer">
+                    <div class="col-12">
+                        <p class="mb-0" id="msg">Please enter a search <code>query</code> above.</p>
+                    </div>
+                </div>
                 <!-- total results + pagination -->
-                <div class="row align-items-center">
+                <div class="row align-items-center mb-3" hidden id="pagination">
                     <div class="col-6">
                         <p class="mb-0">
                             Total Results: <span id="totalResults">123</span>
@@ -39,19 +52,19 @@
                     </div>
                     <div class="col-6">
                         <div class="row no-gutters align-items-center justify-content-end">
-                            <button class="btn btn-sm btn-dark mr-2" type="button" id="prevPage">
+                            <button class="btn btn-sm btn-dark mr-2" type="button" id="prevPageBtn">
                                 &#9668;
                             </button>
-                            <span id="currPage">1</span> <span>/</span>
-                            <span id="maxPage">10</span>
-                            <button class="btn btn-sm btn-dark ml-2" type="button" id="nextPage">
+                            <span id="currPageCount">1</span> <span class="mx-2">/</span>
+                            <span id="maxPageCount">10</span>
+                            <button class="btn btn-sm btn-dark ml-2" type="button" id="nextPageBtn">
                                 &#9658;
                             </button>
                         </div>
                     </div>
                 </div>
                 <!-- list of search results -->
-                <div class="row no-gutters mt-3">
+                <div class="row no-gutters">
                     <ul class="list-group w-100" id="searchResultsList" />
                 </div>
             </div>

@@ -33,3 +33,17 @@ function normalizeStreams(streams = []) {
           }))
         : [];
 }
+
+/**
+ * Reset a couple of global values.
+ *
+ * @method resetGlobalValues
+ */
+function resetGlobalValues() {
+    // Reset the current page number.
+    GLOBALS.currentPageNumber = 1;
+    // Reset the query offset.
+    GLOBALS.queryOffset = 0;
+    // Reset the max page number.
+    GLOBALS.maxPageNumber = 1;
+}
