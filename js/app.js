@@ -3,6 +3,22 @@
  */
 
 /**
+ * Toggle the loader component.
+ *
+ * @method toggleLoader
+ * @param  {Boolean}     show Show or hide the loader?
+ */
+function toggleLoader(show) {
+    const loader = document.getElementById('loader');
+    // Toggle the loader.
+    if (show) {
+        loader.hasAttribute('hidden') && loader.removeAttribute('hidden');
+    } else {
+        !loader.hasAttribute('hidden') && loader.setAttribute('hidden', true);
+    }
+}
+
+/**
  * Build a single search-results item.
  *
  * @method buildSearchResultItem
@@ -118,6 +134,9 @@ function fetchResultsFor(query = GLOBALS.prevSearchQuery) {
         query &&
         (query !== GLOBALS.prevSearchQuery || GLOBALS.currentPageNumber <= GLOBALS.maxPageNumber)
     ) {
+        // Show the loader.
+        toggleLoader(true);
+        // Search the streams.
         searchStreams(query)
             .then(resp => {
                 // Clean out the old UI.
@@ -140,6 +159,10 @@ function fetchResultsFor(query = GLOBALS.prevSearchQuery) {
                     <br />
                     <code>${err.message}</code>
                 `;
+            })
+            .finally(() => {
+                // Hide the loader.
+                toggleLoader();
             });
     }
 }

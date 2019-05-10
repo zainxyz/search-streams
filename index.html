@@ -23,9 +23,9 @@
                     <br />A stream is returned if the query parameter is matched entirely or partially, in the channel description or game name.</p>
             </div>
         </div>
-        <div class="row no-gutters flex-column border border-secondary rounded shadow-sm">
+        <div class="row no-gutters flex-column border border-secondary rounded shadow-sm overflow-hidden">
             <!-- top search query box -->
-            <div class="col-12 border-bottom border-secondary p-4">
+            <div class="search-query-container col-12 border-bottom border-secondary p-4">
                 <div class="input-group">
                     <input aria-label="Search query" class="form-control" id="searchInput" name="search" placeholder="Search query..." tabindex="0" type="text" />
                     <div class="input-group-append">
@@ -36,15 +36,20 @@
                 </div>
             </div>
             <!-- bottom items list -->
-            <div class="col-12 p-4">
+            <div class="search-results-container col-12 p-4">
+                <!-- loading message -->
+                <div class="loading-message d-flex flex-column align-items-center justify-content-center p-5" id="loader" hidden>
+                    <div class="spinner-border text-primary mb-2" role="status"></div>
+                    <p class="mb-0">fetching results...</p>
+                </div>
                 <!-- welcome message -->
-                <div class="row align-items-center" id="msgContainer">
+                <div class="msg-container row align-items-center" id="msgContainer">
                     <div class="col-12">
                         <p class="mb-0" id="msg">Please enter a search <code>query</code> above.</p>
                     </div>
                 </div>
                 <!-- total results + pagination -->
-                <div class="row align-items-center mb-3" hidden id="pagination">
+                <div class="pagination row align-items-center mb-3" hidden id="pagination">
                     <div class="col-6">
                         <p class="mb-0">
                             Total Results: <span id="totalResults">123</span>
@@ -64,18 +69,18 @@
                     </div>
                 </div>
                 <!-- list of search results -->
-                <div class="row no-gutters">
+                <div class="search-results-list row no-gutters">
                     <ul class="list-group w-100" id="searchResultsList" />
                 </div>
             </div>
         </div>
     </div>
     <!-- Load the scripts -->
+    <script src="./js/constants.js" charset="utf-8"></script>
+    <script src="./js/utils.js" charset="utf-8"></script>
+    <script src="./js/handleEvents.js" charset="utf-8"></script>
     <script src="./js/api.js" charset="utf-8"></script>
     <script src="./js/app.js" charset="utf-8"></script>
-    <script src="./js/constants.js" charset="utf-8"></script>
-    <script src="./js/handleEvents.js" charset="utf-8"></script>
-    <script src="./js/utils.js" charset="utf-8"></script>
 </body>
 
 </html>

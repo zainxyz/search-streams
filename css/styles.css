@@ -1,6 +1,34 @@
 /* Add additional styles if needed. */
 
+:root {
+    --loader-height: 160px;
+}
+
 p,
 span {
     font-weight: 300;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.search-results-container {
+    position: relative;
+    min-height: var(--loader-height);
+}
+
+.msg-container {
+    min-height: var(--loader-height);
+}
+
+.loading-message {
+    background-color: rgba(248, 249, 250, 0.8); /* #f8f9fa */
+    height: 100%;
+    left: 0;
+    min-height: var(--loader-height);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
