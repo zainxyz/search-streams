@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Search Streams</title>
+    <meta name="author" content="Zain Abidi" />
+    <meta
+      name="description"
+      content="Search the Twitch.tv Streams using V5 APIs"
+    />
+    <meta name="keywords" content="vanilla js,twitch,tv,streams,search" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,700"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body>
+    <!-- Design the App -->
+    <div class="container my-5 px-4">
+      <div
+        class="row no-gutters flex-column border border-secondary rounded shadow-sm"
+      >
+        <!-- top search query box -->
+        <div class="col-12 border-bottom border-secondary p-4">
+          <div class="input-group">
+            <input
+              aria-label="Search query"
+              class="form-control"
+              id="searchInput"
+              name="search"
+              placeholder="Search query..."
+              tabindex="0"
+              type="text"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-primary"
+                id="searchInputBtn"
+                type="button"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- bottom items list -->
+        <div class="col-12 p-4">
+          <!-- total results + pagination -->
+          <div class="row align-items-center">
+            <div class="col-6">
+              Total Results: <span id="totalResults">123</span>
+            </div>
+            <div class="col-6">
+              <div
+                class="row no-gutters align-items-center justify-content-end"
+              >
+                <button
+                  class="btn btn-sm btn-dark mr-2"
+                  type="button"
+                  id="prevPage"
+                >
+                  &#9668;
+                </button>
+                <span id="currPage">1</span> <span>/</span>
+                <span id="maxPage">10</span>
+                <button
+                  class="btn btn-sm btn-dark ml-2"
+                  type="button"
+                  id="nextPage"
+                >
+                  &#9658;
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- list of search results -->
+          <div class="row no-gutters mt-3">
+            <ul class="list-group w-100">
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="row align-items-stretch">
+                  <div class="col-2">
+                    <img
+                      src="https://placeimg.com/100/100/any"
+                      alt="placeholder image"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="col-10">
+                    <h5 class="mb-1">Stream Name - 1</h5>
+                    <div
+                      class="d-flex w-100 align-items-baseline justify-content-start"
+                    >
+                      <p class="mb-1">Game Name -&nbsp;</p>
+                      <small>12345 Viewers</small>
+                    </div>
+                    <p class="mb-0">
+                      Stream description goes here, so much text that you can't
+                      handle this amazing stream. We've got all the viewers. Go
+                      Diablo! Go LOL! Go Counter Strike!
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="row align-items-stretch">
+                  <div class="col-2">
+                    <img
+                      src="https://placeimg.com/100/100/any"
+                      alt="placeholder image"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="col-10">
+                    <h5 class="mb-1">Stream Name - 2</h5>
+                    <div
+                      class="d-flex w-100 align-items-baseline justify-content-start"
+                    >
+                      <p class="mb-1">Game Name -&nbsp;</p>
+                      <small>12345 Viewers</small>
+                    </div>
+                    <p class="mb-0">
+                      Stream description goes here, so much text that you can't
+                      handle this amazing stream. We've got all the viewers. Go
+                      Diablo! Go LOL! Go Counter Strike!
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="row align-items-stretch">
+                  <div class="col-2">
+                    <img
+                      src="https://placeimg.com/100/100/any"
+                      alt="placeholder image"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="col-10">
+                    <h5 class="mb-1">Stream Name - 3</h5>
+                    <div
+                      class="d-flex w-100 align-items-baseline justify-content-start"
+                    >
+                      <p class="mb-1">Game Name -&nbsp;</p>
+                      <small>12345 Viewers</small>
+                    </div>
+                    <p class="mb-0">
+                      Stream description goes here, so much text that you can't
+                      handle this amazing stream. We've got all the viewers. Go
+                      Diablo! Go LOL! Go Counter Strike!
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="row align-items-stretch">
+                  <div class="col-2">
+                    <img
+                      src="https://placeimg.com/100/100/any"
+                      alt="placeholder image"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="col-10">
+                    <h5 class="mb-1">Stream Name - 4</h5>
+                    <div
+                      class="d-flex w-100 align-items-baseline justify-content-start"
+                    >
+                      <p class="mb-1">Game Name -&nbsp;</p>
+                      <small>12345 Viewers</small>
+                    </div>
+                    <p class="mb-0">
+                      Stream description goes here, so much text that you can't
+                      handle this amazing stream. We've got all the viewers. Go
+                      Diablo! Go LOL! Go Counter Strike!
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="row align-items-stretch">
+                  <div class="col-2">
+                    <img
+                      src="https://placeimg.com/100/100/any"
+                      alt="placeholder image"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="col-10">
+                    <h5 class="mb-1">Stream Name - 5</h5>
+                    <div
+                      class="d-flex w-100 align-items-baseline justify-content-start"
+                    >
+                      <p class="mb-1">Game Name -&nbsp;</p>
+                      <small>12345 Viewers</small>
+                    </div>
+                    <p class="mb-0">
+                      Stream description goes here, so much text that you can't
+                      handle this amazing stream. We've got all the viewers. Go
+                      Diablo! Go LOL! Go Counter Strike!
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Load the scripts -->
+    <script src="./js/app.js" charset="utf-8"></script>
+  </body>
+</html>
