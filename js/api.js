@@ -1,28 +1,4 @@
 /**
- * The Twitch.tv client-id.
- * FIXME: Remove this from the core-code and place it higher up in an .env file.
- *
- * @type {String}
- */
-const CLIENT_ID = 'wnys7hbeeg9wrgvczr8kjnvcfkj86k';
-
-/**
- * Format a given map of xhr params.
- *
- * @method formatParams
- * @param  {Object}     params The map of params
- * @return {String}            The url formatted params string
- */
-function formatParams(params) {
-    return params && typeof params === 'object'
-        ? '?' +
-              Object.keys(params)
-                  .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-                  .join('&')
-        : '';
-}
-
-/**
  * Promisify the vanilla jx XHR request to hit an API.
  *
  * @method makeRequest
@@ -68,20 +44,37 @@ function makeRequest({ method = '', url = '', params = null, headers = null }) {
     });
 }
 
-makeRequest({
-    method: 'GET',
-    url: 'https://api.twitch.tv/kraken/search/streams',
-    headers: {
-        'Client-Id': CLIENT_ID
-    },
-    params: {
-        query: 'diablo',
-        limit: 5
+/**
+ * Search Twitch.tv streams based on the user's query.
+ *
+ * @method searchStreams
+ * @param  {String}      [query=''] The user's query
+ * @param  {Number}      [offset=0] The offset (if any)
+ * @return {Object}
+ */
+async function searchStreams(query = '', offset = 0) {
+    try {
+        // Fetch the stream results.
+        const resp = await makeRequest({
+            method: 'GET',
+            url: CLIENT_URL,
+            headers: {
+                'Client-Id': CLIENT_ID
+            },
+            params: {
+                limit: 5,
+                offset,
+                query
+            }
+        });
+        console.log('searchStreams : resp :', resp);
+        // Return a clean obj.
+        return {
+            streams: normalizeStreams(resp.streams || []),
+            total: resp._total
+        };
+    } catch (e) {
+        console.log('e :', e);
+        return e;
     }
-})
-    .then(resp => {
-        console.log('resp :', resp);
-    })
-    .catch(err => {
-        console.log('err :', err);
-    });
+}
