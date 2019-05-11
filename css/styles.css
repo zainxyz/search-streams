@@ -25,33 +25,12 @@ a {
     transition: color 0.2s ease-in-out;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .text-pink {
     color: var(--pink) !important;
-}
-
-.search-results-container {
-    position: relative;
-    min-height: var(--loader-height);
-}
-
-.msg-container {
-    min-height: var(--loader-height);
-}
-
-.loading-message {
-    background-color: rgba(248, 249, 250, 0.8); /* #f8f9fa */
-    height: 100%;
-    left: 0;
-    min-height: var(--loader-height);
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-}
-
-.form-control:focus {
-    border-color: var(--pink);
-    box-shadow: 0 0 0 0.2rem var(--pink-rgba-50);
 }
 
 .btn-pink {
@@ -99,18 +78,48 @@ a {
     border-color: var(--pink-rgba-80);
 }
 
-footer .info {
+.badge-pink {
+    color: var(--white);
+    background-color: var(--pink);
+}
+
+.search-results-container {
+    position: relative;
+    min-height: var(--loader-height);
+}
+
+.msg-container {
+    min-height: var(--loader-height);
+}
+
+.loading-message {
+    background-color: rgba(248, 249, 250, 0.8); /* #f8f9fa */
+    height: 100%;
+    left: 0;
+    min-height: var(--loader-height);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.form-control:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 0.2rem var(--pink-rgba-50);
+}
+
+.the-footer .info {
     font-size: 14px;
 }
 
-footer .third-parties {
+.the-footer .third-parties {
     font-size: 12px;
 }
 
-footer a {
+.the-footer a {
     color: var(--pink);
 }
 
-footer a:hover {
+.the-footer a:hover {
     color: var(--light);
 }
