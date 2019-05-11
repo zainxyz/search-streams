@@ -47,11 +47,11 @@ function handleOnClickPageBtn(prev) {
         return function onClick(e) {
             if (GLOBALS.currentPageNumber !== 1) {
                 // Decrement the current page number.
-                GLOBALS.currentPageNumber -= 1;
+                GLOBALS.currentPageNumber = GLOBALS.currentPageNumber - 1;
                 // Decrement the query offset based on the query limit.
-                GLOBALS.queryOffset -= GLOBALS.QUERY_LIMIT;
+                GLOBALS.queryOffset = GLOBALS.queryOffset - GLOBALS.QUERY_LIMIT;
                 // Re-fetch the search results.
-                fetchResultsFor();
+                fetchResultsFor(null, true);
             }
         };
     }
@@ -59,11 +59,11 @@ function handleOnClickPageBtn(prev) {
         // If we're not at the max page count.
         if (GLOBALS.currentPageNumber <= GLOBALS.maxPageNumber) {
             // Increment the current page number.
-            GLOBALS.currentPageNumber += 1;
+            GLOBALS.currentPageNumber = GLOBALS.currentPageNumber + 1;
             // Increment the query offset based on the query limit.
-            GLOBALS.queryOffset += GLOBALS.QUERY_LIMIT;
+            GLOBALS.queryOffset = GLOBALS.queryOffset + GLOBALS.QUERY_LIMIT;
             // Re-fetch the search results.
-            fetchResultsFor();
+            fetchResultsFor(null, true);
         }
     };
 }

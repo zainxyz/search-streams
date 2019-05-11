@@ -127,17 +127,19 @@ function buildHeader(res) {
  * Fetch results and render the DOM for a given search query.
  *
  * @method fetchResultsFor
- * @param  {String}        query The search query
+ * @param  {String}        [query='']      The search query
+ * @param  {Boolean}       [refetch=false] Should we refetch results for the same query?
  */
-function fetchResultsFor(query = GLOBALS.prevSearchQuery) {
-    if (
-        query &&
-        (query !== GLOBALS.prevSearchQuery || GLOBALS.currentPageNumber <= GLOBALS.maxPageNumber)
-    ) {
+function fetchResultsFor(query = '', refetch = false) {
+    // Catch an empty query.
+    const searchText = query || GLOBALS.prevSearchQuery;
+    // Either we want to refetch results for the same query,
+    // or we want to fetch results for a new query.
+    if (refetch || (searchText && searchText !== GLOBALS.prevSearchQuery)) {
         // Show the loader.
         toggleLoader(true);
         // Search the streams.
-        searchStreams(query)
+        searchStreams(searchText)
             .then(resp => {
                 // Clean out the old UI.
                 cleanSearchResults();
@@ -148,7 +150,7 @@ function fetchResultsFor(query = GLOBALS.prevSearchQuery) {
                     Array.isArray(resp.streams) &&
                     resp.streams.forEach(buildSearchResultItem);
                 // Update the prevSearchQuery value.
-                GLOBALS.prevSearchQuery = query;
+                GLOBALS.prevSearchQuery = searchText;
             })
             .catch(err => {
                 // Find some elements.
