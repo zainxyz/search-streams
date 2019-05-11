@@ -61,9 +61,9 @@ async function searchStreams(query = '') {
                 'Client-Id': GLOBALS.CLIENT_ID
             },
             params: {
+                query,
                 limit: GLOBALS.QUERY_LIMIT,
-                offset: GLOBALS.queryOffset,
-                query
+                offset: GLOBALS.queryOffset
             }
         });
         const total = resp._total;
