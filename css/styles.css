@@ -13,6 +13,10 @@ span {
     display: none !important;
 }
 
+.container {
+    transition: max-width 0.2s ease-in-out;
+}
+
 .search-results-container {
     position: relative;
     min-height: var(--loader-height);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
 
 <head>
     <meta charset="UTF-8" />
@@ -33,17 +33,21 @@
     <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
-<body>
-    <!-- Design the App -->
-    <div class="container my-5 px-4">
-        <div class="row">
-            <div class="col-12">
+<body class="d-flex flex-column h-100">
+    <!-- header -->
+    <header class="bg-light text-muted shadow-sm py-4 px-0">
+        <div class="container px-4">
+            <div class="row no-gutters flex-column w-100">
                 <h4 class="font-weight-light">Search Twitch.tv Streams</h4>
-                <p>Searches for streams based on a specified <code>query</code> parameter.
+                <p class="mb-0">Searches for streams based on a specified <code>query</code> parameter.
                     <br />A stream is returned if the query parameter is matched entirely or partially, in the channel description or game name.</p>
             </div>
         </div>
-        <div class="row no-gutters flex-column border border-secondary rounded shadow-sm overflow-hidden">
+    </header>
+    <!-- Design the App -->
+    <main role="main" class="container my-5 px-4 flex-shrink-0">
+        <!-- main content -->
+        <div class="row no-gutters flex-column border border-secondary shadow-sm overflow-hidden">
             <!-- top search query box -->
             <div class="search-query-container col-12 border-bottom border-secondary p-4">
                 <div class="input-group">
@@ -94,7 +98,15 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+    <!-- footer -->
+    <footer class="bg-dark text-muted mt-auto py-3">
+        <div class="container px-4">
+            <p class="mb-0">Made with 💛 (and Vanilla JS) by <a href="https://github.com/zainxyz" target="_blank">Zain Abidi</a></p>
+            <small>Favicon courtesey of iconarchive.com.</small>
+            <small>Streams Search API courtesey of twitch.tv.</small>
+        </div>
+    </footer>
     <!-- Load the scripts -->
     <script src="./js/constants.js" charset="utf-8"></script>
     <script src="./js/utils.js" charset="utf-8"></script>
