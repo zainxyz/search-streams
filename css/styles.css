@@ -2,6 +2,10 @@
 
 :root {
     --loader-height: 160px;
+    --pink-rgba-50: rgba(232, 62, 140, 0.5);
+    --pink-rgba-80: rgba(232, 62, 140, 0.8);
+    --pink-dark-10: #d91a72;
+    --pink-dark-15: #c21766;
 }
 
 p,
@@ -19,6 +23,10 @@ span {
 
 a {
     transition: color 0.2s ease-in-out;
+}
+
+.text-pink {
+    color: var(--pink) !important;
 }
 
 .search-results-container {
@@ -39,6 +47,64 @@ a {
     top: 0;
     width: 100%;
     z-index: 1;
+}
+
+.form-control:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 0.2rem var(--pink-rgba-50);
+}
+
+.btn-pink {
+    color: var(--white);
+    background-color: var(--pink);
+    border-color: var(--pink);
+}
+
+.btn-outline-pink {
+    color: var(--pink);
+    border-color: var(--pink);
+}
+
+.btn-pink:hover {
+    color: var(--white);
+    background-color: var(--pink-dark-10);
+    border-color: var(--pink-dark-10);
+}
+
+.btn-pink:not(:disabled):not(.disabled).active,
+.btn-pink:not(:disabled):not(.disabled):active {
+    color: var(--white);
+    background-color: var(--pink-dark-15);
+    border-color: var(--pink-dark-10);
+}
+
+.btn-outline-pink:not(:disabled):not(.disabled).active,
+.btn-outline-pink:not(:disabled):not(.disabled):active,
+.btn-outline-pink:hover {
+    color: var(--white);
+    background-color: var(--pink);
+    border-color: var(--pink);
+}
+
+.btn-pink.focus,
+.btn-pink:focus,
+.btn-outline-pink.focus,
+.btn-outline-pink:focus {
+    box-shadow: 0 0 0 0.2rem var(--pink-rgba-50);
+}
+
+.btn-pink:disabled, .btn-pink:disabled {
+    color: var(--white);
+    background-color: var(--pink-rgba-80);
+    border-color: var(--pink-rgba-80);
+}
+
+footer .info {
+    font-size: 14px;
+}
+
+footer .third-parties {
+    font-size: 12px;
 }
 
 footer a {
