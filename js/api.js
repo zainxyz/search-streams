@@ -92,12 +92,17 @@ async function searchStreams(query = '') {
  */
 function fetchResultsFor(query = '', refetch = false) {
     // Catch an empty query.
-    const searchText = query || GLOBALS.prevSearchQuery;
+    const searchText = String(query || GLOBALS.prevSearchQuery).trim();
     // Either we want to refetch results for the same query,
     // or we want to fetch results for a new query.
-    if (refetch || (searchText && searchText !== GLOBALS.prevSearchQuery)) {
+    //
+    // NOTE: Commented out this line to act more like most search engines.
+    // We shouldn't be worried about the previous search result,
+    // unless that became a requirement.
+    // if (refetch || (searchText && searchText !== GLOBALS.prevSearchQuery)) {
+    if (refetch || searchText) {
         // Show the loader.
-        toggleLoader(true);
+        toggleLoader(true, searchText);
         // Search the streams.
         searchStreams(searchText)
             .then(resp => {

@@ -93,7 +93,7 @@ a:hover {
 }
 
 .loading-message {
-    background-color: rgba(248, 249, 250, 0.8); /* #f8f9fa */
+    background-color: rgba(248, 249, 250, 0.85); /* #f8f9fa */
     height: 100%;
     left: 0;
     min-height: var(--loader-height);

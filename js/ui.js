@@ -2,15 +2,22 @@
  * Toggle the loader component.
  *
  * @method toggleLoader
- * @param  {Boolean}     show Show or hide the loader?
+ * @param  {Boolean}     show  Show or hide the loader?
+ * @param  {String}      query The query being searched
  */
-function toggleLoader(show) {
+function toggleLoader(show, query = null) {
+    const defaultLoaderMsg = 'fetching results...';
     const loader = document.getElementById('loader');
+    const loaderMsg = document.getElementById('loaderMsg');
     // Toggle the loader.
     if (show) {
         loader.hasAttribute('hidden') && loader.removeAttribute('hidden');
+        if (query) {
+            loaderMsg.innerHTML = `fetching results for <code>${query}</code>...`;
+        }
     } else {
         !loader.hasAttribute('hidden') && loader.setAttribute('hidden', true);
+        loaderMsg.innerHTML = defaultLoaderMsg;
     }
 }
 
