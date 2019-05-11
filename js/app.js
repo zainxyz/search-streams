@@ -1,8 +1,4 @@
 /**
- * The main search-streams app js file.
- */
-
-/**
  * Toggle the loader component.
  *
  * @method toggleLoader
