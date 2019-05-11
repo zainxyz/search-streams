@@ -44,3 +44,9 @@ Visit `http://localhost:5000` in the browser of your choice.
 Start editing the app, and refresh the browser.
 
 Happy Coding! 🎉
+
+## Twitch.tv `search/streams` API
+
+To learn more about Twitch.tv's `search/streams` API, please visit their developers website at [https://dev.twitch.tv/docs/v5/reference/search/#search-streams][b778a1a4].
+
+[b778a1a4]: https://dev.twitch.tv/docs/v5/reference/search/#search-streams "Twitch Developers - search streams"

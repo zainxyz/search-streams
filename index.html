@@ -22,12 +22,15 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="./assets/img/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon-16x16.png">
-    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#343a40">
     <meta name="msapplication-TileImage" content="./assets/img/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#e83e8c">
     <link rel="manifest" href="./manifest.json" crossorigin="anonymous">
     <!-- fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/solid.css" integrity="sha384-ioUrHig76ITq4aEJ67dHzTvqjsAP/7IzgwE7lgJcg2r7BRNGYSK0LwSmROzYtgzs" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/brands.css" integrity="sha384-i2PyM6FMpVnxjRPi0KW/xIS7hkeSznkllv+Hx/MtYDaHA5VcF0yL3KVlvzp8bWjQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/fontawesome.css" integrity="sha384-sri+NftO+0hcisDKgr287Y/1LVnInHJ1l+XC7+FOabmTTIK0HnE2ID+xxvJ21c5J" crossorigin="anonymous">
     <!-- styles -->
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/styles.css" />
@@ -53,7 +56,7 @@
                 <div class="input-group">
                     <input aria-label="Search query" class="form-control" id="searchInput" name="search" placeholder="Search query..." tabindex="0" type="text" />
                     <div class="input-group-append">
-                        <button class="btn btn-outline-primary" id="searchInputBtn" type="button">
+                        <button class="btn btn-outline-pink" id="searchInputBtn" type="button">
                             Search
                         </button>
                     </div>
@@ -63,7 +66,7 @@
             <div class="search-results-container col-12 p-4">
                 <!-- loading message -->
                 <div class="loading-message d-flex flex-column align-items-center justify-content-center p-5" id="loader" hidden>
-                    <div class="spinner-border text-primary mb-2" role="status"></div>
+                    <div class="spinner-border text-pink mb-2" role="status"></div>
                     <p class="mb-0">fetching results...</p>
                 </div>
                 <!-- welcome message -->
@@ -102,9 +105,14 @@
     <!-- footer -->
     <footer class="bg-dark text-muted mt-auto py-3">
         <div class="container px-4">
-            <p class="mb-0">Made with 💜 (and vanilla js) by <a href="https://github.com/zainxyz" title="Zain Abidi (github)" target="_blank">Zain Abidi</a></p>
-            <small>Favicon courtesey of <a href="http://www.iconarchive.com/" title="IconArchive" target="_blank">iconarchive</a>.</small>
-            <small>Streams Search API and Stream Preview Thumbnail Images courtesey of <a href="https://dev.twitch.tv/docs/v5/reference/search/#search-streams" title="Twitch Developers" target="_blank">twitch.tv</a>.</small>
+            <p class="mb-1 info">
+                &copy; 2019 &ndash; Present &middot; Made with <i class="fas fa-heart text-pink"></i> by Zain Abidi &middot; <a href="https://github.com/zainxyz" title="Zain Abidi (github)" target="_blank"><i class="fab fa-github"></i></a> &middot;
+                <a href="https://github.com/zainxyz/search-streams" title="Search Streams (source code)" target="_blank"><i class="fas fa-code"></i> (source code)</a>
+            </p>
+            <p class="mb-0 third-parties">
+                Favicon courtesy of <a href="http://www.iconarchive.com/" title="IconArchive" target="_blank">Icon Archive</a> &middot; Streams Search API courtesy of <a href="https://dev.twitch.tv/docs/v5/reference/search/#search-streams" title="Twitch Developers"
+                target="_blank">Twitch.tv</a> &middot; Heart, GitHub, and Code icon courtesy of <a href="https://fontawesome.com" title="Font Awesome" target="_blank">Font Awesome</a>
+            </p>
         </div>
     </footer>
     <!-- Load the scripts -->
