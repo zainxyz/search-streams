@@ -88,10 +88,6 @@ a:hover {
     min-height: var(--loader-height);
 }
 
-.msg-container {
-    min-height: var(--loader-height);
-}
-
 .loading-message {
     background-color: rgba(248, 249, 250, 0.85); /* #f8f9fa */
     height: 100%;
@@ -100,7 +96,11 @@ a:hover {
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 10;
+}
+
+.msg-container {
+    min-height: var(--loader-height);
 }
 
 .form-control:focus {

@@ -15,6 +15,24 @@ function formatParams(params) {
 }
 
 /**
+ * Format a given number.
+ *
+ * @method formatNumberWithDelimiter
+ * @param  {Number}                  [num=0] The number to format
+ * @return {String}                          The formatted number
+ */
+function formatNumberWithDelimiter(num = 0) {
+    console.log(num);
+    if (!num) {
+        return 0;
+    }
+    // Build regex.
+    const regex = `(.)(?=(\\d{3})+$)`;
+    // Format the number.
+    return String(num).replace(new RegExp(regex, 'g'), `$1,`);
+}
+
+/**
  * Normalize a list of streams with just the right amount of usable data.
  *
  * @method normalizeStreams

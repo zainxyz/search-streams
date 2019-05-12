@@ -4,6 +4,12 @@ Search for Twitch.tv streams based on a specified `query` parameter.
 
 A stream is returned if the query parameter is matched entirely or partially, in the channel description or game name.
 
+## Node + Browser support
+
+Please make sure that you're running Node version `8.6+` for some of the **ES6+** functionality to work.
+
+As for browsers, please make sure that you are using one of the modern browsers that provide native support for ES6+ features. Google Chrome, Mozilla Firefox, and MacOS Safari, latest versions are supported. 👍
+
 ## Local Development?
 
 Clone the repo and change to its directory:

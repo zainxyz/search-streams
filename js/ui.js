@@ -88,6 +88,8 @@ function buildSearchResultItem(item) {
     li.setAttribute('href', item.url);
     li.setAttribute('class', 'list-group-item list-group-item-action');
     li.setAttribute('target', '_blank');
+    // Format the viewers count.
+    const numOfViewers = formatNumberWithDelimiter(item.viewers);
     // NOTE: Instead of creating individual elements,
     // and appending them to the `li` one by one,
     // we can safely set the `innerHTML` for this sample project.
@@ -103,7 +105,7 @@ function buildSearchResultItem(item) {
                 <h5 class="mb-1">${item.displayName}</h5>
                 <div class="d-flex w-100 align-items-baseline justify-content-start">
                     <p class="mb-1">${item.gameName} -&nbsp;</p>
-                    <small>${item.viewers} Viewers</small>
+                    <small>${numOfViewers} Viewers</small>
                 </div>
                 <p class="mb-0">
                     ${item.description}
