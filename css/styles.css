@@ -108,6 +108,11 @@ a:hover {
     box-shadow: 0 0 0 0.2rem var(--pink-rgba-50);
 }
 
+.pagination-btn > i {
+    width: 13px;
+    height: 13px;
+}
+
 .the-footer .info {
     font-size: 14px;
 }
